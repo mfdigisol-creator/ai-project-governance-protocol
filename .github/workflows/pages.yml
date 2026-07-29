@@ -1,0 +1,60 @@
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: "pip"
+      - name: Reconstruct publication sources
+        run: |
+          cat .source/PROTOCOL.part-* > PROTOCOL.md
+          cat .source/build_pdf.part-* > build_pdf.py
+      - name: Install PDF dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Build and verify PDF
+        run: |
+          python build_pdf.py
+          test -s AI_Project_Governance_Protocol_v2.0.pdf
+          sha256sum AI_Project_Governance_Protocol_v2.0.pdf
+      - name: Assemble public site
+        run: |
+          mkdir -p _site/assets
+          cp index.html README.md PROTOCOL.md AI_Project_Governance_Protocol_v2.0.pdf _site/
+          cp assets/site.css _site/assets/
+          touch _site/.nojekyll
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: "_site"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
