@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -43,6 +43,16 @@ jobs:
           python build_pdf.py
           test -s AI_Project_Governance_Protocol_v2.0.pdf
           sha256sum AI_Project_Governance_Protocol_v2.0.pdf
+          printf 'Cloud PDF build completed successfully.\nWorkflow source commit: %s\nBuilt at (UTC): %s\n' "$GITHUB_SHA" "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" > BUILD_STATUS.txt
+      - name: Commit generated public artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add PROTOCOL.md build_pdf.py AI_Project_Governance_Protocol_v2.0.pdf BUILD_STATUS.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Build public governance protocol PDF"
+            git push
+          fi
       - name: Assemble public site
         run: |
           mkdir -p _site/assets
