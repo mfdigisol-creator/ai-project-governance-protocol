@@ -19,3 +19,5 @@ This framework helps project owners and AI-assisted teams prevent roadmap drift,
 ## Publication
 
 The repository root contains the static site. GitHub Pages deploys it through `.github/workflows/pages.yml`.
+
+Pages deployment was activated by the repository owner on July 29, 2026.
