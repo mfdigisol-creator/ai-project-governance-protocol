@@ -60,11 +60,27 @@ jobs:
           cp assets/site.css _site/assets/
           touch _site/.nojekyll
       - name: Configure GitHub Pages
+        id: configure
         uses: actions/configure-pages@v5
       - name: Upload site artifact
+        id: upload
         uses: actions/upload-pages-artifact@v4
         with:
           path: "_site"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Record Pages deployment result
+        if: always()
+        env:
+          CONFIGURE_OUTCOME: ${{ steps.configure.outcome }}
+          UPLOAD_OUTCOME: ${{ steps.upload.outcome }}
+          DEPLOY_OUTCOME: ${{ steps.deployment.outcome }}
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          printf 'GitHub Pages deployment diagnostic.\nWorkflow source commit: %s\nChecked at (UTC): %s\nConfigure Pages: %s\nUpload artifact: %s\nDeploy Pages: %s\nPage URL: %s\n' "$GITHUB_SHA" "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$CONFIGURE_OUTCOME" "$UPLOAD_OUTCOME" "$DEPLOY_OUTCOME" "$PAGE_URL" > PAGES_STATUS.txt
+          git add PAGES_STATUS.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Record GitHub Pages deployment status"
+            git push
+          fi
