@@ -1,0 +1,7 @@
+GitHub Pages deployment diagnostic.
+Workflow source commit: 8c39b355337bc90e1421a3080143c12093a35a8c
+Checked at (UTC): 2026-07-29T13:04:43Z
+Configure Pages: failure
+Upload artifact: skipped
+Deploy Pages: skipped
+Page URL: 
