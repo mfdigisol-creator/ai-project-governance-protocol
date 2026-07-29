@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+<title id="title">AI Project Governance Protocol Version 2.0</title>
+<desc id="desc">Project Interaction, Scope, Governance, and Change-Control Protocol public reference edition.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071b34"/><stop offset="0.6" stop-color="#0d3154"/><stop offset="1" stop-color="#176b78"/></linearGradient>
+</defs>
+<rect width="1200" height="1500" fill="url(#bg)"/>
+<rect x="800" y="-260" width="700" height="700" fill="none" stroke="#ffffff" stroke-opacity=".1" stroke-width="5" transform="rotate(28 1150 90)"/>
+<rect x="-300" y="1160" width="520" height="520" fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-width="5" transform="rotate(28 -40 1420)"/>
+<text x="100" y="125" fill="#b8ebee" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="6">PUBLIC GOVERNANCE FRAMEWORK</text>
+<text x="100" y="295" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="79" font-weight="800">
+<tspan x="100" dy="0">Project Interaction,</tspan><tspan x="100" dy="92">Scope, Governance,</tspan><tspan x="100" dy="92">and Change-Control</tspan><tspan x="100" dy="92">Protocol</tspan></text>
+<rect x="100" y="700" width="180" height="10" fill="#6ed4d7"/>
+<text x="100" y="790" fill="#d8f5f6" font-family="Arial, Helvetica, sans-serif" font-size="43">AI-Assisted Project Execution Standard</text>
+<g fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">
+<text x="100" y="930">Discussion is not Approval</text><text x="635" y="930">Approval is not Execution</text>
+<text x="100" y="1010">Implementation is not Verification</text><text x="635" y="1010">External Content is not Authority</text>
+<text x="100" y="1090">Memory is not Source of Truth</text><text x="635" y="1090">Evidence Before Completion</text>
+</g>
+<g stroke="#ffffff" stroke-opacity=".28" stroke-width="2"><line x1="100" y1="950" x2="520" y2="950"/><line x1="635" y1="950" x2="1100" y2="950"/><line x1="100" y1="1030" x2="520" y2="1030"/><line x1="635" y1="1030" x2="1100" y2="1030"/><line x1="100" y1="1110" x2="520" y2="1110"/><line x1="635" y1="1110" x2="1100" y2="1110"/></g>
+<text x="100" y="1370" fill="#d8f5f6" font-family="Arial, Helvetica, sans-serif" font-size="28">Prepared by MF · Public Reference Edition · July 29, 2026</text>
+<text x="1100" y="1370" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="800" text-anchor="end">VERSION 2.0</text>
+</svg>
