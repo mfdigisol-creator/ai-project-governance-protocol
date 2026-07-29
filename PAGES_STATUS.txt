@@ -1,7 +1,7 @@
 GitHub Pages deployment diagnostic.
-Workflow source commit: 8c39b355337bc90e1421a3080143c12093a35a8c
-Checked at (UTC): 2026-07-29T13:04:43Z
-Configure Pages: failure
-Upload artifact: skipped
-Deploy Pages: skipped
-Page URL: 
+Workflow source commit: a75f99242142845171558ab9c176cfd67ee48175
+Checked at (UTC): 2026-07-29T13:10:22Z
+Configure Pages: success
+Upload artifact: success
+Deploy Pages: success
+Page URL: http://alhumacollection.com/ai-project-governance-protocol/
